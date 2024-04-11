@@ -49,3 +49,18 @@ console.log(newVehicle2);
 
 let newVehicle3 = createItem("Toyota Camry", 24000, "Sedan");
 console.log(newVehicle3);
+
+function addToCart(user: user, item: vehicle): void {
+    user.cart.push(item);
+  }
+
+
+  addToCart(newUser1, newVehicle1);
+  console.log(newUser1);
+
+  function removeFromCart(user: user): void {
+    user.cart = [];
+  }
+
+  removeFromCart(newUser1);
+console.log(newUser1);
