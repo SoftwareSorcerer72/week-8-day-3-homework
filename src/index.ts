@@ -42,8 +42,8 @@ function addToCart(user: user, item: vehicle): void {
 }
 
 
-function removeFromCart(user: user): void {
-    user.cart = [];
+function removeFromCart(user: user, itemId: string): void {
+user.cart = user.cart.filter(item => item.id !== itemId);
 }
 
 
@@ -70,18 +70,47 @@ function printCart(user: user): void {
 }
 
 
+let newUser1 = createUser("Mike Welborn", 33);
+console.log(newUser1);
 
 
 let newVehicle1 = createItem("Tesla Model S", 79000, "Electric car");
-console.log(newVehicle1);
+
 
 
 let newVehicle2 = createItem("Mazda CX-5", 25000, "SUV");
-console.log(newVehicle2);
+
 
 
 let newVehicle3 = createItem("Toyota Camry", 24000, "Sedan");
-console.log(newVehicle3);
 
-let newUser1 = createUser("Mike Welborn", 33);
-console.log(newUser1);
+
+addToCart(newUser1, newVehicle1);
+printCart(newUser1);
+console.log(cartTotal(newUser1));
+
+
+addToCart(newUser1, newVehicle2);
+addToCart(newUser1, newVehicle2);
+addToCart(newUser1, newVehicle2);
+
+printCart(newUser1);
+console.log(cartTotal(newUser1));
+
+
+addToCart(newUser1, newVehicle3);
+addToCart(newUser1, newVehicle3);
+addToCart(newUser1, newVehicle3);
+
+printCart(newUser1);
+console.log(cartTotal(newUser1));
+
+removeFromCart(newUser1, newVehicle2.id);
+
+printCart(newUser1);
+console.log(cartTotal(newUser1));
+
+removeQuantityFromCart(newUser1, newVehicle3.id, 2);
+
+printCart(newUser1);
+console.log(cartTotal(newUser1));
