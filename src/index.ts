@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 type car = {
     id: string;
     name: string;
@@ -26,3 +28,16 @@ type user = {
     age: number;
     cart: (car | truck | suv)[];
 }
+
+
+function createUser(name: string, age: number): user {
+  return {
+    id: uuidv4(),
+    name: name,
+    age: age,
+    cart: [],
+  };
+}
+
+let newUser1 = createUser("Mike Welborn", 33);
+console.log(newUser1);
