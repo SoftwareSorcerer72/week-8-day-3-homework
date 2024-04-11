@@ -35,3 +35,19 @@ function removeFromCart(user) {
 }
 removeFromCart(newUser1);
 console.log(newUser1);
+for (let i = 0; i < 5; i++) {
+    addToCart(newUser1, newVehicle1);
+}
+console.log(newUser1);
+function removeQuantityFromCart(user, itemId, quantity) {
+    let itemsToRemove = quantity;
+    user.cart = user.cart.filter(item => {
+        if (item.id === itemId && itemsToRemove > 0) {
+            itemsToRemove--;
+            return false;
+        }
+        return true;
+    });
+}
+removeQuantityFromCart(newUser1, newVehicle1.id, 5);
+console.log(newUser1);
