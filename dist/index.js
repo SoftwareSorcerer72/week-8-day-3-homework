@@ -51,3 +51,14 @@ function removeQuantityFromCart(user, itemId, quantity) {
 }
 removeQuantityFromCart(newUser1, newVehicle1.id, 5);
 console.log(newUser1);
+function cartTotal(user) {
+    return user.cart.reduce((total, item) => total + item.price, 0);
+}
+function printCart(user) {
+    user.cart.forEach(item => console.log(item));
+}
+for (let i = 0; i < 5; i++) {
+    addToCart(newUser1, newVehicle3);
+}
+console.log(cartTotal(newUser1));
+printCart(newUser1);

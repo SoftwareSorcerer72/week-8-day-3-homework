@@ -25,18 +25,51 @@ function createUser(name: string, age: number): user {
   };
 }
 
-let newUser1 = createUser("Mike Welborn", 33);
-console.log(newUser1);
-
 
 function createItem(name: string, price: number, description: string): vehicle {
     return {
-      id: uuidv4(),
-      name: name,
-      price: price,
-      description: description,
+        id: uuidv4(),
+        name: name,
+        price: price,
+        description: description,
     };
 }
+
+
+
+function addToCart(user: user, item: vehicle): void {
+    user.cart.push(item);
+}
+
+
+function removeFromCart(user: user): void {
+    user.cart = [];
+}
+
+
+
+function removeQuantityFromCart(user: user, itemId: string, quantity: number): void {
+    let itemsToRemove = quantity;
+    user.cart = user.cart.filter(item => {
+        if (item.id === itemId && itemsToRemove > 0) {
+            itemsToRemove--;
+            return false;
+        }
+        return true;
+    });
+}
+
+
+
+function cartTotal(user: user): number {
+    return user.cart.reduce((total, item) => total + item.price, 0);
+}
+
+function printCart(user: user): void {
+    user.cart.forEach(item => console.log(item));
+}
+
+
 
 
 let newVehicle1 = createItem("Tesla Model S", 79000, "Electric car");
@@ -50,36 +83,5 @@ console.log(newVehicle2);
 let newVehicle3 = createItem("Toyota Camry", 24000, "Sedan");
 console.log(newVehicle3);
 
-function addToCart(user: user, item: vehicle): void {
-    user.cart.push(item);
-  }
-
-
-  addToCart(newUser1, newVehicle1);
-  console.log(newUser1);
-
-  function removeFromCart(user: user): void {
-    user.cart = [];
-  }
-
-  removeFromCart(newUser1);
+let newUser1 = createUser("Mike Welborn", 33);
 console.log(newUser1);
-
-for (let i = 0; i < 5; i++) {
-    addToCart(newUser1, newVehicle1);
-  }
-  console.log(newUser1);
-
-  function removeQuantityFromCart(user: user, itemId: string, quantity: number): void {
-    let itemsToRemove = quantity;
-    user.cart = user.cart.filter(item => {
-      if (item.id === itemId && itemsToRemove > 0) {
-        itemsToRemove--;
-        return false;
-      }
-      return true;
-    });
-  }
-
- removeQuantityFromCart(newUser1, newVehicle1.id, 5);
- console.log(newUser1);
