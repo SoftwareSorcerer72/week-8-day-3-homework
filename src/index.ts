@@ -37,3 +37,15 @@ function createItem(name: string, price: number, description: string): vehicle {
       description: description,
     };
 }
+
+
+let newVehicle1 = createItem("Tesla Model S", 79000, "Electric car");
+console.log(newVehicle1);
+
+
+let newVehicle2 = createItem("Mazda CX-5", 25000, "SUV");
+console.log(newVehicle2);
+
+
+let newVehicle3 = createItem("Toyota Camry", 24000, "Sedan");
+console.log(newVehicle3);

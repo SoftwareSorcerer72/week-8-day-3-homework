@@ -11,3 +11,17 @@ function createUser(name, age) {
 }
 let newUser1 = createUser("Mike Welborn", 33);
 console.log(newUser1);
+function createItem(name, price, description) {
+    return {
+        id: (0, uuid_1.v4)(),
+        name: name,
+        price: price,
+        description: description,
+    };
+}
+let newVehicle1 = createItem("Tesla Model S", 79000, "Electric car");
+console.log(newVehicle1);
+let newVehicle2 = createItem("Mazda CX-5", 25000, "SUV");
+console.log(newVehicle2);
+let newVehicle3 = createItem("Toyota Camry", 24000, "Sedan");
+console.log(newVehicle3);
